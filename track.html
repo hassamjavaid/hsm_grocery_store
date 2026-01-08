@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Order | INU Grocery</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 50px; }
+        .track-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 100%; max-width: 500px; }
+        .status-bar { height: 10px; background: #ddd; border-radius: 5px; margin: 30px 0; position: relative; }
+        .progress { height: 100%; width: 75%; background: #27ae60; border-radius: 5px; }
+        .status-text { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <div class="track-card">
+        <h2 style="color: #2c3e50;">Order #{{ order.id }}</h2>
+        <p>Thank you, <strong>{{ order.name }}</strong>!</p>
+        <div class="status-bar"><div class="progress"></div></div>
+        <p class="status-text">Status: {{ order.status }}</p>
+        <p style="color: #666;">Delivering to: {{ order.address }}</p>
+        <hr>
+        <p>Partnering with local suppliers for freshness [cite: 30]</p>
+        <a href="/" style="color: #3498db; text-decoration: none;">Return to Home</a>
+    </div>
+</body>
+</html>

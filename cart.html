@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout | Hassam Grocery</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 40px; }
+        .checkout-container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; gap: 30px; }
+        .form-section { flex: 1.5; border-right: 1px solid #eee; padding-right: 30px; }
+        .summary-section { flex: 1; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .confirm-btn { background: #27ae60; color: white; width: 100%; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="form-section">
+            <h3>🚚 Delivery Address</h3>
+            <form action="/checkout" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="address" rows="4" placeholder="Full Delivery Address" required></textarea>
+                
+                <h3>💳 Payment Method</h3>
+                <p><input type="radio" checked> Cash on Delivery (Secure Options )</p>
+                
+                <button type="submit" class="confirm-btn">Confirm Order</button>
+            </form>
+        </div>
+
+        <div class="summary-section">
+            <h3>Order Summary</h3>
+            {% for item in items %}
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.9rem;">
+                <span>{{ item.name }}</span>
+                <span>Rs. {{ item.price }}</span>
+            </div>
+            {% endfor %}
+            <hr>
+            <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.2rem;">
+                <span>Total</span>
+                <span>Rs. {{ total }}</span>
+            </div>
+        </div>
+    </div>
+    <p style="text-align:center;"><a href="/">← Continue Shopping</a></p>
+</body>
+</html>
